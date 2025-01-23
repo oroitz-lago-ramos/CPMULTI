@@ -1,0 +1,8 @@
+//
+// Created by Oroitz on 23/01/2025.
+//
+
+#ifndef PERFORMANCEANALYZER_H
+#define PERFORMANCEANALYZER_H
+
+#endif //PERFORMANCEANALYZER_H
