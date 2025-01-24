@@ -3,6 +3,7 @@
 #include "../include/ImageLoader.h"
 #include "../include/Filters.h"
 #include "../include/Transformations.h"
+#include "../include/ImageSplitter.h"
 
 int main() {
     std::string inputPath = "../data/input/photo.png";
@@ -33,6 +34,12 @@ int main() {
     // 4. Appliquer une rotation de 45 degrés
     cv::Mat rotated_image = Transformations::rotateImageFromCenter(image, 45);
     cv::imshow("Rotation 45 degres", rotated_image);
+
+    // 5. Diviser l'image en quatre parties
+    std::vector<cv::Mat> subImages = ImageSplitter::splitImage(image);
+    for (int i = 0; i < subImages.size(); i++) {
+        cv::imshow("Sous-image " + std::to_string(i + 1), subImages[i]);
+    }
 
     // Attendre que l'utilisateur appuie sur une touche pour fermer
     cv::waitKey(0);

@@ -13,5 +13,7 @@ add_executable(CPMULTI src/main.cpp
         include/PerformanceAnalyzer.h
         src/PerformanceAnalizer.cpp
         include/ThreadPool.h
-        src/ThreadPool.cpp)
+        src/ThreadPool.cpp
+        include/ImageSplitter.h
+        src/ImageSplitter.cpp)
 target_link_libraries(CPMULTI ${OpenCV_LIBS})
