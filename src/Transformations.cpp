@@ -4,7 +4,8 @@
 
 #include "../include/Transformations.h"
 
-cv::Mat rotateImageFromCenter(const cv::Mat& image, double angle) {
+
+cv::Mat Transformations::rotateImageFromCenter(const cv::Mat& image, double angle) {
     cv::Mat result;
     cv::Point2f center(image.cols / 2, image.rows / 2);
     cv::Mat rotation_matrix = cv::getRotationMatrix2D(center, angle, 1.0);

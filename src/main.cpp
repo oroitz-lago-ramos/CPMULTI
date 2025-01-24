@@ -34,6 +34,12 @@ int main() {
     cv::Mat rotated_image = Transformations::rotateImageFromCenter(image, 45);
     cv::imshow("Rotation 45 degres", rotated_image);
 
+    //cv::Mat sobel_image = Filters::applySobel(image);
+    //cv::imshow("Sobel", sobel_image);
+
+    //cv::Mat denoising_image = Filters::applyDenoising(image);
+    //cv::imshow("Denoising", denoising_image);
+
     // Attendre que l'utilisateur appuie sur une touche pour fermer
     cv::waitKey(0);
 
