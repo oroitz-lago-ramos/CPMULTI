@@ -8,7 +8,7 @@
 #include <opencv2/opencv.hpp>
 
 class Transformations {
-public:
+    public:
     static cv::Mat rotateImageFromCenter(const cv::Mat& image, double angle);
 };
 #endif //TRANSFORMATIONS_H
