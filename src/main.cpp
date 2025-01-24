@@ -34,8 +34,14 @@ int main() {
     // 4. Appliquer une rotation de 45 degrés
     cv::Mat rotated_image = Transformations::rotateImageFromCenter(image, 45);
     cv::imshow("Rotation 45 degres", rotated_image);
+   
+    //cv::Mat sobel_image = Filters::applySobel(image);
+    //cv::imshow("Sobel", sobel_image);
 
-    // 5. Diviser l'image en quatre parties
+    //cv::Mat denoising_image = Filters::applyDenoising(image);
+    //cv::imshow("Denoising", denoising_image);
+    
+  // 5. Diviser l'image en quatre parties
     std::vector<cv::Mat> subImages = ImageSplitter::splitImage(image);
     for (int i = 0; i < subImages.size(); i++) {
         cv::imshow("Sous-image " + std::to_string(i + 1), subImages[i]);
@@ -43,6 +49,9 @@ int main() {
 
     // Attendre que l'utilisateur appuie sur une touche pour fermer
     cv::waitKey(0);
+  
+   
+
 
     return 0;
 }

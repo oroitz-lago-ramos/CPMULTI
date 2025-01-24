@@ -31,3 +31,15 @@ cv::Mat Filters::applyInvertColors(const cv::Mat &image) {
     cv::bitwise_not(image, result);
     return result;
 }
+
+cv::Mat Filters::applyDenoising(const cv::Mat &image) {
+    cv::Mat result;
+    cv::fastNlMeansDenoising(image, result,30, 7, 21);
+    return result;
+}
+
+cv::Mat Filters::applySobel(const cv::Mat &image) {
+    cv::Mat result;
+    cv::Sobel(image, result, cv::BORDER_CONSTANT, 1, 0, 3);
+    return result;
+}
