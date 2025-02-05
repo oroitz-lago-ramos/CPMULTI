@@ -21,3 +21,23 @@ std::vector<cv::Mat> ImageSplitter::splitImage(const cv::Mat& inputImage) {
 
     return subImages;
 }
+
+cv::Mat ImageSplitter::mergeImage(const std::vector<cv::Mat>& subImages) {
+    if (subImages.size() != 4) {
+        throw std::runtime_error("mergeImage needs 4 images.");
+    }
+
+    int subWidth = subImages[0].cols;
+    int subHeight = subImages[0].rows;
+    int width = subWidth * 2;
+    int height = subHeight * 2;
+
+    cv::Mat mergedImage(height, width, subImages[0].type());
+
+    subImages[0].copyTo(mergedImage(cv::Rect(0, 0, subWidth, subHeight)));                // top-left
+    subImages[1].copyTo(mergedImage(cv::Rect(subWidth, 0, subWidth, subHeight)));           // top-right
+    subImages[2].copyTo(mergedImage(cv::Rect(0, subHeight, subWidth, subHeight)));          // bottom-left
+    subImages[3].copyTo(mergedImage(cv::Rect(subWidth, subHeight, subWidth, subHeight)));   // bottom-right
+
+    return mergedImage;
+}
