@@ -15,5 +15,7 @@ add_executable(CPMULTI src/main.cpp
         include/ThreadPool.h
         src/ThreadPool.cpp
         include/ImageSplitter.h
-        src/ImageSplitter.cpp)
+        src/ImageSplitter.cpp
+        src/Menus.cpp
+        include/Menus.h)
 target_link_libraries(CPMULTI ${OpenCV_LIBS})
