@@ -8,4 +8,4 @@ all:
 	make -C build
 
 run:
-	build/OpenCVTest
+	build/CPMULTI
