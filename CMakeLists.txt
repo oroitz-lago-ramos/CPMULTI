@@ -17,5 +17,6 @@ add_executable(CPMULTI src/main.cpp
         include/ImageSplitter.h
         src/ImageSplitter.cpp
         src/Menus.cpp
-        include/Menus.h)
+        include/Menus.h
+        src/configs.cpp)
 target_link_libraries(CPMULTI ${OpenCV_LIBS})
