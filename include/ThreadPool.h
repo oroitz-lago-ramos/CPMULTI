@@ -10,7 +10,7 @@
 class ThreadPool {
 public:
     ThreadPool() = default;
-    cv::Mat processImage(const cv::Mat& image, std::function<cv::Mat(const cv::Mat&)> filterFunction);
+    cv::Mat processImage(const cv::Mat& image, std::function<cv::Mat(const cv::Mat&)> filterFunction, PerformanceAnalyzer& performanceAnalyzer);
 };
 
 #endif //THREADPOOL_H
