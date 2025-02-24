@@ -39,7 +39,7 @@ void Menus::launchMenuFilters(const string& imagePath) {
             // call invert colors
                 break;
             case 3:
-                Filters::applyMedianFilter(image, 10); //Size
+                Filters::applyMedianFilter(image); //Size
             // call median
                 break;
             case 4:

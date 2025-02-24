@@ -10,7 +10,7 @@
 class Filters {
     public:
     static cv::Mat applyGaussianBlur(const cv::Mat& image);
-    static cv::Mat applyMedianFilter(const cv::Mat& image, int kernelSize);
+    static cv::Mat applyMedianFilter(const cv::Mat& image);
     static cv::Mat applyCannyEdgeDetection(const cv::Mat& image);
     static cv::Mat applyInvertColors(const cv::Mat& image);
     static cv::Mat applyDenoising(const cv::Mat& image);
