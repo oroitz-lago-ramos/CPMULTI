@@ -7,13 +7,41 @@
 #include "../include/Filters.h"
 #include "../include/Transformations.h"
 #include "../include/ImageLoader.h"
+#include "../include/ThreadPool.h"
 #include <iostream>
 #include <cstdlib>
 using namespace std;
 
+void Menus::launchMenuChoiceThread(const cv::Mat &image, PerformanceAnalyzer performance) {
+    int choice;
+    do {
+        cout << "CPMULTI\n";
+        cout << "Please make your selection\n";
+        cout << "1 - Use Thread\n";
+        cout << "2 - Don't use Thread\n";
+        cout << "3 - Quit\n";
+        cout << "Selection: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                launchMenu(image, true, performance);
+
+                break;
+            case 2:
+                launchMenu(image, false, performance);
+
+            case 3:
+                exit(0);
+            default:
+                exit(1);
+        }
+    } while (choice != 3);
+    exit(0);
+}
 
 
-void Menus::launchMenuFilters(const cv::Mat& image) {
+void Menus::launchMenuFilters(const cv::Mat &image, bool useThread, PerformanceAnalyzer performance) {
     int choice;
     do {
         cout << "CPMULTI\n";
@@ -30,27 +58,51 @@ void Menus::launchMenuFilters(const cv::Mat& image) {
 
         switch (choice) {
             case 1:
-                Filters::applyDenoising(image);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyDenoising, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applyDenoising(image); }
             // call denoising
                 break;
             case 2:
-                Filters::applyInvertColors(image);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyInvertColors, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applyInvertColors(image); }
             // call invert colors
                 break;
             case 3:
-                Filters::applyMedianFilter(image); //Size
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyMedianFilter, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applyMedianFilter(image); }
             // call median
                 break;
             case 4:
-                Filters::applyGaussianBlur(image);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyGaussianBlur, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applyGaussianBlur(image); }
             // call gaussian blur
                 break;
             case 5:
-                Filters::applySobel(image);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applySobel, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applySobel(image); }
             // call sobel
                 break;
             case 6:
-                Filters::applyCannyEdgeDetection(image);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyCannyEdgeDetection, performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Filters::applyCannyEdgeDetection(image); }
             // call canny;
                 break;
             case 7:
@@ -62,8 +114,7 @@ void Menus::launchMenuFilters(const cv::Mat& image) {
     exit(0);
 }
 
-void Menus::launchMenuTransformation(const cv::Mat &image)
-{
+void Menus::launchMenuTransformation(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance) {
     int choice;
     do {
         cout << "CPMULTI\n";
@@ -75,9 +126,14 @@ void Menus::launchMenuTransformation(const cv::Mat &image)
 
         switch(choice) {
             case 1:
-                Transformations::rotateImageFromCenter(image, 20);
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Transformations::rotateImageFromCenter,
+                                                                  performance);
+                    cv::imwrite("../data/output/output.jpg", outputImage);
+                } else { Transformations::rotateImageFromCenter(image); }
 
-            break;
+                break;
             case 2:
                 exit(0);
             default:
@@ -88,8 +144,7 @@ void Menus::launchMenuTransformation(const cv::Mat &image)
     exit(0);
 }
 
-void Menus::launchMenu(const cv::Mat &image)
-{
+void Menus::launchMenu(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance) {
     int choice;
 
     do {
@@ -103,11 +158,11 @@ void Menus::launchMenu(const cv::Mat &image)
 
         switch(choice) {
             case 1:
-                launchMenuFilters(image);
-            break;
+                launchMenuFilters(image, useThread, performance);
+                break;
             case 2:
-                launchMenuTransformation(image);
-            break;
+                launchMenuTransformation(image, useThread, performance);
+                break;
             case 3:
                 exit(0);
             default:

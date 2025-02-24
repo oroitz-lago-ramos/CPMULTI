@@ -19,7 +19,7 @@ int main() {
         return -1;
     }
     Menus menu;
-    menu.launchMenu(image);
+    menu.launchMenuChoiceThread(image, performance);
 
     performance.stop("Loading Image");
     performance.printResults();
