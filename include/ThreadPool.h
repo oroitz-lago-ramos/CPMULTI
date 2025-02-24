@@ -6,6 +6,7 @@
 #include <functional>
 #include <opencv2/core/mat.hpp>
 #include "filters.h"
+#include "PerformanceAnalyzer.h"
 
 class ThreadPool {
 public:

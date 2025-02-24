@@ -9,6 +9,6 @@
 
 class Transformations {
     public:
-    static cv::Mat rotateImageFromCenter(const cv::Mat& image, double angle);
+    static cv::Mat rotateImageFromCenter(const cv::Mat &image);
 };
 #endif //TRANSFORMATIONS_H

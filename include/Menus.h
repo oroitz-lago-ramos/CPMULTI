@@ -5,12 +5,18 @@
 #ifndef MENUS_H
 #define MENUS_H
 #include <opencv2/core/cvstd.hpp>
+#include <opencv2/core/mat.hpp>
+#include "PerformanceAnalyzer.h"
 
 class Menus{
     public:
-        static void launchMenu(const cv::Mat &image);
-        static void launchMenuFilters(const cv::Mat &image);
-        static void launchMenuTransformation(const cv::Mat &image);
+    static void launchMenuChoiceThread(const cv::Mat &image, PerformanceAnalyzer performance);
+
+    static void launchMenu(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance);
+
+    static void launchMenuFilters(const cv::Mat &image, bool useThread, PerformanceAnalyzer performance);
+
+    static void launchMenuTransformation(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance);
 };
 
 
