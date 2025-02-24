@@ -13,9 +13,8 @@ using namespace std;
 
 
 
-void Menus::launchMenuFilters(const string& imagePath) {
+void Menus::launchMenuFilters(const cv::Mat& image) {
     int choice;
-    cv::Mat image = cv::imread(imagePath, cv::IMREAD_COLOR);
     do {
         cout << "CPMULTI\n";
         cout << "Please make your selection\n";
@@ -63,10 +62,9 @@ void Menus::launchMenuFilters(const string& imagePath) {
     exit(0);
 }
 
-
-void Menus::launchMenuTransformation(const string& imagePath) {
+void Menus::launchMenuTransformation(const cv::Mat &image)
+{
     int choice;
-    cv::Mat image = cv::imread(imagePath, cv::IMREAD_COLOR);
     do {
         cout << "CPMULTI\n";
         cout << "Please make your selection\n";
@@ -87,11 +85,11 @@ void Menus::launchMenuTransformation(const string& imagePath) {
         }
     }
     while(choice !=3);
-    exit(0);}
+    exit(0);
+}
 
-
-
-void Menus::launchMenu(const string& imagePath) {
+void Menus::launchMenu(const cv::Mat &image)
+{
     int choice;
 
     do {
@@ -105,10 +103,10 @@ void Menus::launchMenu(const string& imagePath) {
 
         switch(choice) {
             case 1:
-                launchMenuFilters(imagePath);
+                launchMenuFilters(image);
             break;
             case 2:
-                launchMenuTransformation(imagePath);
+                launchMenuTransformation(image);
             break;
             case 3:
                 exit(0);

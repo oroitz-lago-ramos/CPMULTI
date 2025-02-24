@@ -8,10 +8,9 @@
 
 class Menus{
     public:
-
-    static void launchMenu(const std::string &imagePath);
-    static void launchMenuFilters(const std::string& imagePath);
-    static void launchMenuTransformation(const std::string& imagePath);
+        static void launchMenu(const cv::Mat &image);
+        static void launchMenuFilters(const cv::Mat &image);
+        static void launchMenuTransformation(const cv::Mat &image);
 };
 
 
