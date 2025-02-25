@@ -141,7 +141,8 @@ void Menus::launchMenuTransformation(const cv::Mat &image, bool useThread, Perfo
         cout << "CPMULTI\n";
         cout << "Please make your selection\n";
         cout << "1 - rotate image\n";
-        cout << "2 - Quit\n";
+        cout << "2 - Fourier\n";
+        cout << "3 - Quit\n";
         cout << "Selection: ";
         cin >> choice;
 
@@ -161,6 +162,18 @@ void Menus::launchMenuTransformation(const cv::Mat &image, bool useThread, Perfo
 
                 break;
             case 2:
+                if (useThread == true) {
+                    ThreadPool threadPool;
+                    cv::Mat outputImage = threadPool.processImage(image, Transformations::fourier, performance);
+                    cv::imwrite("../data/output/output_fourier_thread.jpg", outputImage);
+                } else {
+                    performance.start("Fourier");
+                    cv::Mat outputImage = Transformations::fourier(image);
+                    cv::imwrite("../data/output/output_fourier.jpg", outputImage);
+                    performance.stop("Fourier");
+                }
+                break;
+            case 3:
                 return;
             default:
                 break;
