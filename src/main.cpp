@@ -9,8 +9,10 @@
 #include "../include/Menus.h"
 
 int main() {
+    // Variables & instances
     std::string inputPath = "../data/input/photo.png";
     PerformanceAnalyzer performance;
+    
     // Load image
     performance.start("Loading Image");
     cv::Mat image = ImageLoader::loadImage(inputPath);
@@ -18,27 +20,13 @@ int main() {
         std::cerr << "Error on loading Image." << std::endl;
         return -1;
     }
+    performance.stop("Loading Image");
+
+    // Launch menu
     Menus menu;
     menu.launchMenuChoiceThread(image, performance);
 
-    performance.stop("Loading Image");
+    // Print the timers results
     performance.printResults();
     return 0;
 }
-
-// int main() {
-//     std::string inputPath = "../data/input/photo.png";
-//     cv::Mat image = ImageLoader::loadImage(inputPath);
-//     if (image.empty()) {
-//         std::cerr << "Failed to load image!" << std::endl;
-//         return -1;
-//     }
-
-//     ThreadPool threadPool;
-//     cv::Mat outputImage = threadPool.processImage(image, Filters::applyDenoising);
-    
-//     cv::imwrite("../data/output/output.jpg", outputImage);
-//     std::cout << "Processing complete. Output saved as output.jpg" << std::endl;
-    
-//     return 0;
-// }

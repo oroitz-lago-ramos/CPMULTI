@@ -21,7 +21,7 @@ cv::Mat ThreadPool::processImage(const cv::Mat& image, std::function<cv::Mat(con
         threads.emplace_back([&, i]() {
             performanceAnalyzer.start("Filtering Sub Image " + std::to_string(i) + " in the " + std::to_string(i) + "th thread");
             processedSubImages[i] = filterFunction(subImages[i]);
-            performanceAnalyzer.start("Filtering Sub Image " + std::to_string(i) + " in the " + std::to_string(i) + "th thread");
+            performanceAnalyzer.stop("Filtering Sub Image " + std::to_string(i) + " in the " + std::to_string(i) + "th thread");
             // cv::imwrite("../data/Image Split/output" + std::to_string(i) + ".jpg", processedSubImages[i]);
         });
     }

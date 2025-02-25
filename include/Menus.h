@@ -10,13 +10,13 @@
 
 class Menus{
     public:
-    static void launchMenuChoiceThread(const cv::Mat &image, PerformanceAnalyzer performance);
+    static void launchMenuChoiceThread(const cv::Mat &image, PerformanceAnalyzer& performance);
 
-    static void launchMenu(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance);
+    static void launchMenu(const cv::Mat &image, bool useThread, PerformanceAnalyzer& performance);
 
-    static void launchMenuFilters(const cv::Mat &image, bool useThread, PerformanceAnalyzer performance);
+    static void launchMenuFilters(const cv::Mat &image, bool useThread, PerformanceAnalyzer& performance);
 
-    static void launchMenuTransformation(const cv::Mat &image, bool useThread, PerformanceAnalyzer &performance);
+    static void launchMenuTransformation(const cv::Mat &image, bool useThread, PerformanceAnalyzer& performance);
 };
 
 
