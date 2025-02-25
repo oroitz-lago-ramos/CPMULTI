@@ -10,5 +10,6 @@
 class Transformations {
     public:
     static cv::Mat rotateImageFromCenter(const cv::Mat &image);
+    static cv::Mat fourier(const cv::Mat& image);
 };
 #endif //TRANSFORMATIONS_H
