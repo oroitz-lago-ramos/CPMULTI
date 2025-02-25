@@ -1,0 +1,20 @@
+//
+// Created by Oroitz on 23/01/2025.
+//
+
+#ifndef FILTERS_H
+#define FILTERS_H
+
+#include <opencv2/opencv.hpp>
+
+class Filters {
+    public:
+    static cv::Mat applyGaussianBlur(const cv::Mat& image);
+    static cv::Mat applyMedianFilter(const cv::Mat& image);
+    static cv::Mat applyCannyEdgeDetection(const cv::Mat& image);
+    static cv::Mat applyInvertColors(const cv::Mat& image);
+    static cv::Mat applyDenoising(const cv::Mat& image);
+    static cv::Mat applySobel(const cv::Mat& image);
+};
+
+#endif //FILTERS_H
