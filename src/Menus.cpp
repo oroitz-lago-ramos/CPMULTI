@@ -57,74 +57,68 @@ void Menus::launchMenuFilters(const cv::Mat &image, bool useThread, PerformanceA
         switch (choice) {
             case 1:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyDenoising, performance);
-                    cv::imwrite("../data/output/output_denoise_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applyDenoising, performance);
+                    imwrite("../data/output/output_denoise_thread.jpg", outputImage);
                 } else {
                     performance.start("Denoising");
                     cv::Mat outputImage = Filters::applyDenoising(image);
                     performance.stop("Denoising");
-                    cv::imwrite("../data/output/output_denoise.jpg", outputImage);
-                    }
+                    imwrite("../data/output/output_denoise.jpg", outputImage);
+                }
                 break;
             case 2:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyInvertColors, performance);
-                    cv::imwrite("../data/output/output_invert_color_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applyInvertColors, performance);
+                    imwrite("../data/output/output_invert_color_thread.jpg", outputImage);
                 } else {
                     performance.start("Invert Colors");
                     cv::Mat outputImage = Filters::applyInvertColors(image);
                     performance.stop("Invert Colors");
-                    cv::imwrite("../data/output/output_invert_color.jpg", outputImage);
+                    imwrite("../data/output/output_invert_color.jpg", outputImage);
                     }
                 break;
             case 3:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyMedianFilter, performance);
-                    cv::imwrite("../data/output/output_median_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applyMedianFilter, performance);
+                    imwrite("../data/output/output_median_thread.jpg", outputImage);
                 } else {
                     performance.start("Median Filter");
                     cv::Mat outputImage = Filters::applyMedianFilter(image);
-                    cv::imwrite("../data/output/output_median.jpg", outputImage);
                     performance.stop("Median Filter");
+                    imwrite("../data/output/output_median.jpg", outputImage);
                 }
                 break;
             case 4:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyGaussianBlur, performance);
-                    cv::imwrite("../data/output/output_gaussian_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applyGaussianBlur, performance);
+                    imwrite("../data/output/output_gaussian_thread.jpg", outputImage);
                 } else {
                     performance.start("Gaussian Blur");
                     cv::Mat outputImage = Filters::applyGaussianBlur(image);
-                    cv::imwrite("../data/output/output_gaussian.jpg", outputImage);
                     performance.stop("Gaussian Blur");
+                    imwrite("../data/output/output_gaussian.jpg", outputImage);
                 }
                 break;
             case 5:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applySobel, performance);
-                    cv::imwrite("../data/output/output_sobel_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applySobel, performance);
+                    imwrite("../data/output/output_sobel_thread.jpg", outputImage);
                 } else {
                     performance.start("Sobel");
                     cv::Mat outputImage = Filters::applySobel(image);
-                    cv::imwrite("../data/output/output_sobel.jpg", outputImage);
                     performance.stop("Sobel");
+                    imwrite("../data/output/output_sobel.jpg", outputImage);
                 }
                 break;
             case 6:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Filters::applyCannyEdgeDetection, performance);
-                    cv::imwrite("../data/output/output_canny_thread.jpg", outputImage);
+                    cv::Mat outputImage = ThreadPool::processImage(image, Filters::applyCannyEdgeDetection, performance);
+                    imwrite("../data/output/output_canny_thread.jpg", outputImage);
                 } else {
                     performance.start("Canny Edge Detection");
                     cv::Mat outputImage = Filters::applyCannyEdgeDetection(image);
-                    cv::imwrite("../data/output/output_canny.jpg", outputImage);
                     performance.stop("Canny Edge Detection");
+                    imwrite("../data/output/output_canny.jpg", outputImage);
                 }
                 break;
             case 7:
@@ -148,15 +142,14 @@ void Menus::launchMenuTransformation(const cv::Mat &image, bool useThread, Perfo
         switch(choice) {
             case 1:
                 if (useThread == true) {
-                    ThreadPool threadPool;
-                    cv::Mat outputImage = threadPool.processImage(image, Transformations::rotateImageFromCenter,
+                    cv::Mat outputImage = ThreadPool::processImage(image, Transformations::rotateImageFromCenter,
                                                                   performance);
-                    cv::imwrite("../data/output/output_rotate_thread.jpg", outputImage);
+                   imwrite("../data/output/output_rotate_thread.jpg", outputImage);
                 } else {
                     performance.start("Rotate Image");
                     cv::Mat outputImage = Transformations::rotateImageFromCenter(image);
-                    cv::imwrite("../data/output/output_rotate.jpg", outputImage);
                     performance.stop("Rotate Image");
+                    imwrite("../data/output/output_rotate.jpg", outputImage);
                 }
 
                 break;

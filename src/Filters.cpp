@@ -14,7 +14,7 @@ cv::Mat Filters::applyGaussianBlur(const cv::Mat& image) {
 
 cv::Mat Filters::applyMedianFilter(const cv::Mat& image) {
     cv::Mat result;
-    cv::medianBlur(image, result, 10);
+    cv::medianBlur(image, result, 11);
     return result;
 }
 

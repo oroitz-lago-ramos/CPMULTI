@@ -6,7 +6,7 @@
 #include <vector>
 #include <functional>
 
-cv::Mat ThreadPool::processImage(const cv::Mat& image, std::function<cv::Mat(const cv::Mat&)> filterFunction, PerformanceAnalyzer& performanceAnalyzer) {
+cv::Mat ThreadPool::processImage(const cv::Mat& image, const std::function<cv::Mat(const cv::Mat&)>& filterFunction, PerformanceAnalyzer& performanceAnalyzer) {
     performanceAnalyzer.start("Image Splitting");
     std::vector<cv::Mat> subImages = ImageSplitter::splitImage(image);
     performanceAnalyzer.stop("Image Splitting");
@@ -22,7 +22,6 @@ cv::Mat ThreadPool::processImage(const cv::Mat& image, std::function<cv::Mat(con
             performanceAnalyzer.start("Filtering Sub Image " + std::to_string(i) + " in the " + std::to_string(i) + "th thread");
             processedSubImages[i] = filterFunction(subImages[i]);
             performanceAnalyzer.stop("Filtering Sub Image " + std::to_string(i) + " in the " + std::to_string(i) + "th thread");
-            // cv::imwrite("../data/Image Split/output" + std::to_string(i) + ".jpg", processedSubImages[i]);
         });
     }
 

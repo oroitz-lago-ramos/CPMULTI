@@ -23,8 +23,7 @@ int main() {
     performance.stop("Loading Image");
 
     // Launch menu
-    Menus menu;
-    menu.launchMenuChoiceThread(image, performance);
+    Menus::launchMenuChoiceThread(image, performance);
 
     // Print the timers results
     performance.printResults();
